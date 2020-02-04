@@ -1,9 +1,18 @@
 {
-	"extends": "../../tsconfig.json",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"jsx": "react",
-		"allowUmdGlobalAccess": true,
-		"allowSyntheticDefaultImports": true
-	}
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@libs/*": ["../../libs/*"]
+        }
+    },
+    // "references": [
+    //     { "path": "../../libs" }
+    // ],
+    // "include": [
+    //     "index.tsx",
+    //     "src",
+    //     "../../libs"
+    // ]
 }
