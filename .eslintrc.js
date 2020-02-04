@@ -24,6 +24,7 @@ module.exports = {
 		"plugin:@typescript-eslint/recommended",
 		 // Правила TS, требующие инфо о типах
 		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:react/recommended",
 		// Enables eslint-plugin-prettier and displays prettier errors as ESLint errors.
 		// Make sure this is always the last configuration in the extends array.
 		'plugin:prettier/recommended',
@@ -39,5 +40,7 @@ module.exports = {
 	},
 	// Плагин с наборами правил для TypeScript
 	plugins: ["@typescript-eslint"],
-	rules: {}
+	rules: {
+		"@typescript-eslint/explicit-function-return-type": "off"
+	}
 }

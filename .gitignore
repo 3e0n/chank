@@ -4,3 +4,4 @@ tsc-out
 dist
 node_modules
 .tsbuildinfo
+vendor.umd

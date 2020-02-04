@@ -1,3 +1,2 @@
-export function five() {
-    return 5;
-}
+export { CryptoProvider } from './src/abstract';
+export { cryptoProviderFactory } from './src/factory';
