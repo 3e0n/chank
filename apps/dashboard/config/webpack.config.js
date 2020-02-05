@@ -64,6 +64,10 @@ module.exports = {
         'react-dom': 'ReactDOM',
     },
     devServer: {
-        contentBase: [distFolder, path.resolve(__dirname, '../../../node_modules')],
+        contentBase: [
+            distFolder,
+            path.resolve(__dirname, '../../../node_modules'),
+            path.resolve(__dirname, '../../../dist'),
+        ],
     },
 };

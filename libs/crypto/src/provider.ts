@@ -1,24 +1,23 @@
-import { crypto } from '@waves/ts-lib-crypto';
-import { CryptoProvider, WavesCrypto } from './abstract';
+import { CryptoProvider } from './abstract';
+import { WavesCryptoCreator } from './vendor-crypto-type-only';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const umdWavesModule = (window as any)['@waves/ts-lib-crypto'];
+const cryptoCreator: WavesCryptoCreator = umdWavesModule && umdWavesModule.crypto;
 
 export class CryptoProviderImpl implements CryptoProvider {
     constructor(private seedKey: string) {
+        if (cryptoCreator === undefined) {
+            throw new Error(`UMD module crypto not found in window['@waves/ts-lib-crypto']!`);
+        }
         if (!seedKey || typeof seedKey !== 'string') {
             throw new Error('The seedKey argument must be not empty string!');
         }
-        this.create(seedKey);
     }
 
-    newCrypto() {
-        return crypto();
-    }
+    protected crypto = cryptoCreator && cryptoCreator({ seed: this.seedKey, output: 'Base58' });
 
-    protected crypto!: WavesCrypto;
-
-    protected create(secret: string) {
-        if (!this.crypto) {
-            this.crypto = crypto({ seed: secret });
-        }
-        return this.crypto;
+    keyPair() {
+        return this.crypto.keyPair();
     }
 }

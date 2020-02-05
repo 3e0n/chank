@@ -1,8 +1,5 @@
-import { crypto } from '@waves/ts-lib-crypto';
-import { inferTypes } from '@libs/utils';
-
-export type WavesCrypto = inferTypes.GetReturnType<typeof crypto>;
+import { TKeyPair } from './vendor-crypto-type-only';
 
 export abstract class CryptoProvider {
-    abstract newCrypto(): WavesCrypto;
+    abstract keyPair(): TKeyPair;
 }

@@ -6,13 +6,5 @@
         "paths": {
             "@libs/*": ["../../libs/*"]
         }
-    },
-    // "references": [
-    //     { "path": "../../libs" }
-    // ],
-    // "include": [
-    //     "index.tsx",
-    //     "src",
-    //     "../../libs"
-    // ]
+    }
 }
